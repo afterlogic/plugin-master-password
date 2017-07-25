@@ -29,7 +29,7 @@ class CMasterPasswordPlugin extends AApiPlugin
 		$oAccount = $oApiUsersManager->getAccountByEmail($sEmail);
 
 		$sAdminPassword = $oSettings->GetConf('Common/AdminPassword', '');
-		if (crypt($sIncPassword, CApi::$sSalt) === $sAdminPassword)
+		if (crypt($sIncPassword, CApi::$sSalt) === $sAdminPassword && $oAccount)
 		{
 			$sIncPassword = $oAccount->IncomingMailPassword;
 		}
